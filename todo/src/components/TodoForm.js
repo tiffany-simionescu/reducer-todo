@@ -22,6 +22,7 @@ const TodoForm = () => {
   }
   return (
     <div>
+      <TodoItem state={state} dispatch={dispatch} />
       <form onSubmit={handleSubmit} className="form">
         <input 
           type="text"
@@ -34,7 +35,6 @@ const TodoForm = () => {
         <button type="submit">Submit</button>
         <button onClick={handleRemoval}>Remove Task</button>
       </form>
-      <TodoItem state={state} dispatch={dispatch} />
     </div>
   )
 }
