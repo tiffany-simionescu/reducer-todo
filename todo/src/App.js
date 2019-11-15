@@ -6,6 +6,7 @@ import { reducer, initialState } from './reducers/reducer';
 
 // Components
 import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -13,21 +14,21 @@ function App() {
   const addTodo = () => {
     dispatch({ 
       type: "ADD_TODO",
-      payload: name
+      payload: state.item
     });
   };
 
   const toggleTodo = () => {
     dispatch({
       type: "TOGGLE_TODO",
-      payload: id
+      payload: state.id
     });
   };
 
-  const removeCompleted = () => {
-    dispath({
-      type: "REMOVE_COMPLETED"
-      // payload: true
+  const removeCompleted = (e) => {
+    e.preventDefault();
+    dispatch({ 
+      type: "CLEAR_COMPLETED" 
     });
   };
 
@@ -35,6 +36,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Todo List Application</h1>
+        <TodoForm addTodo={addTodo} removeCompleted={removeCompleted} />
         <TodoList {...state} toggleTodo={toggleTodo} />
       </header>
     </div>
