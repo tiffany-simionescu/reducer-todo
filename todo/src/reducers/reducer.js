@@ -27,6 +27,7 @@ export const reducer = (state, action) => {
 
       case 'REMOVE_TODO':
         return state.filter(todo => !todo.completed)
+        
       default:
         return state;
   }
